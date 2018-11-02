@@ -4,29 +4,36 @@
 #include<iostream>
 #include<fstream>
 #include<conio.h>
-#include<stdio.h>
+#include<cstdio>
 #include<process.h>
 #include<string.h>
 #include<iomanip>
+#include<windows.h>
 using namespace std;
 //****************************************************************************************************//
 //CLASSES USED IN PROJECT
 //****************************************************************************************************//
-
+void gotoxy(int x, int y)
+{
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
 class book
 {
 	char bno[6];
 	char bname[50];
-	char aname[20];
+    char aname[20];
   public:
 	void create_book()
 	 {
 		cout<<"\nNEW BOOK ENTRY...\n";
 		cout<<"\nEnter The book no.";
 		cin>>bno;
-		cout<<"\n\nEnter The Name of The Book ";
+		cout<<"\n\nEnter The Name of The Book: ";
 		gets(bname);
-		cout<<"\n\nEnter The Author's Name ";
+        cout<<"\n\nEnter The Author's Name: ";
 		gets(aname);
 		cout<<"\n\n\nBook Created..";
 	 }
@@ -536,8 +543,8 @@ void book_deposit()
 void intro()
  {
 	//clrscr();
-	//gotoxy(25,11);
-	cout<<"LIBRARY MANAGEMENT SYSTEM";
+	gotoxy(25,11);
+	cout<<"\nLIBRARY MANAGEMENT SYSTEM";
 	cout<<"\n\nMADE BY : $udhanshu Dubey";
 	cout<<"\n\nSCHOOL : KENDRIYA VIDYALAYA No.2 AFS HALWARA";
 	getch();
